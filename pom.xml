@@ -12,7 +12,7 @@
 	<artifactId>dictionaryservice</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Dictionary</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Dictionary Service</description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -23,7 +23,10 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web-services</artifactId>
 		</dependency>
-
+	<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+	</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
