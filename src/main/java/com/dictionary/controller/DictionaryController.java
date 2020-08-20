@@ -3,9 +3,9 @@ package com.dictionary.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dictionary.dto.AddWordRequest;
@@ -15,19 +15,19 @@ import com.dictionary.exception.InvalidRequestException;
 import com.dictionary.service.DictionaryService;
 import com.dictionary.util.RequestUtils;
 
-@RestController
+@RestController(value = "/dictionary")
 public class DictionaryController {
 	@Autowired
 	private DictionaryService dictionayService;
 
 	
-   @RequestMapping(value="/languages",method=RequestMethod.GET,produces="application/json")
+   @GetMapping(value="/languages")
 	public List<String> supportedLanguages(){
 	   
 	   return dictionayService.getLanguagesSupported();
 	}
    
-   @RequestMapping(value="/matchedwords",method=RequestMethod.POST,produces="application/json")
+   @PostMapping(value="/words/word")
   	public DictionaryResponse wordsStartsWith(@RequestBody WordRequest wordRequest){
 	   boolean valid=RequestUtils.validateWordRequest(wordRequest);
 	   String startsWith="";
@@ -40,7 +40,7 @@ public class DictionaryController {
   	    
   	}
    
-   @RequestMapping(value="/addword",method=RequestMethod.POST,produces="application/json")
+   @PostMapping(value="/words/word")
    public String addWordToDictionary(@RequestBody AddWordRequest addWordRequest) {
 	   boolean valid=RequestUtils.validateAddWordRequest(addWordRequest);
 	   String word="";
