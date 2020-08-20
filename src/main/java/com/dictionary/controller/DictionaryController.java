@@ -27,7 +27,7 @@ public class DictionaryController {
 	   return dictionayService.getLanguagesSupported();
 	}
    
-   @PostMapping(value="/words/word")
+   @PostMapping(value="/words/search")
   	public DictionaryResponse wordsStartsWith(@RequestBody WordRequest wordRequest){
 	   boolean valid=RequestUtils.validateWordRequest(wordRequest);
 	   String startsWith="";
@@ -40,7 +40,7 @@ public class DictionaryController {
   	    
   	}
    
-   @PostMapping(value="/words/word")
+   @PostMapping(value="/words")
    public String addWordToDictionary(@RequestBody AddWordRequest addWordRequest) {
 	   boolean valid=RequestUtils.validateAddWordRequest(addWordRequest);
 	   String word="";

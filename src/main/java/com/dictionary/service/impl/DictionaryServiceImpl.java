@@ -1,5 +1,6 @@
 package com.dictionary.service.impl;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -29,6 +30,7 @@ private DictionaryResponse dictionaryResponse;
 	public DictionaryResponse getwordsStartsWith(String startsWith) {
      	Set<String> stringList=dictionaryDao.retrieveWords();
 		List<String> matchedWords=stringList.stream().filter(word->word.startsWith(startsWith)).collect(Collectors.toList());
+		Collections.sort(matchedWords);
 		dictionaryResponse.setWords(matchedWords);
 		dictionaryResponse.setCount(matchedWords.size());
 		return dictionaryResponse;
